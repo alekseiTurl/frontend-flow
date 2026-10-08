@@ -40,35 +40,35 @@ class InstallTests(unittest.TestCase):
         self.assertTrue((self.home / "agents/junior_dev.toml").exists())
         self.assertTrue((self.home / "skills/code-review/SKILL.md").exists())
         self.assertEqual(self.install(configure_playwright=True, install_style=True), [])
-        data = json.loads((self.home / "hooks.json").read_text())
+        data = json.loads((self.home / "hooks.json").read_text(encoding="utf-8"))
         self.assertEqual(len(data["hooks"]["SessionStart"]), 1)
 
     def test_conflict_aborts_before_any_write(self):
         p = self.put("agents/frontend_writer.toml", "custom config")
         with self.assertRaisesRegex(ValueError, "Existing file differs"):
             self.install()
-        self.assertEqual(p.read_text(), "custom config")
+        self.assertEqual(p.read_text(encoding="utf-8"), "custom config")
         self.assertFalse((self.home / "hooks.json").exists())
         self.assertFalse((self.home / "skills").exists())
 
     def test_overwrite_preserves_backup(self):
         p = self.put("agents/frontend_writer.toml", "old personal role")
         self.install(overwrite=True)
-        self.assertIn("gpt-6-luna", p.read_text())
+        self.assertIn("gpt-6-luna", p.read_text(encoding="utf-8"))
         backups = list((self.home / "frontend-flow-backups").glob("*/agents/frontend_writer.toml"))
         self.assertEqual(len(backups), 1)
-        self.assertEqual(backups[0].read_text(), "old personal role")
+        self.assertEqual(backups[0].read_text(encoding="utf-8"), "old personal role")
 
     def test_existing_mcp_and_unrelated_config_are_preserved(self):
         original = '# keep comments\nmodel = "example"\n[mcp_servers.playwright]\ncommand = "custom"\n'
         p = self.put("config.toml", original)
         self.install(configure_playwright=True)
-        self.assertEqual(p.read_text(), original)
+        self.assertEqual(p.read_text(encoding="utf-8"), original)
 
     def test_new_mcp_keeps_other_settings(self):
         self.put("config.toml", '# custom comment\nmodel = "example"\n')
         self.install(configure_playwright=True)
-        text = (self.home / "config.toml").read_text()
+        text = (self.home / "config.toml").read_text(encoding="utf-8")
         self.assertIn("# custom comment", text)
         self.assertEqual(tomllib.loads(text)["model"], "example")
         self.assertIn("playwright", tomllib.loads(text)["mcp_servers"])
@@ -78,7 +78,7 @@ class InstallTests(unittest.TestCase):
         self.put("hooks.json", json.dumps({"description": "custom", "hooks": {"SessionStart": [other]}}))
         self.put("AGENTS.md", "Personal instructions\n")
         self.install(install_style=True)
-        hook = json.loads((self.home / "hooks.json").read_text())
+        hook = json.loads((self.home / "hooks.json").read_text(encoding="utf-8"))
         self.assertEqual(hook["hooks"]["SessionStart"][0], other)
         self.assertEqual(hook["description"], "custom")
         self.assertTrue((self.home / "AGENTS.md").read_text(encoding="utf-8").startswith("Personal instructions"))
@@ -104,7 +104,7 @@ class InstallTests(unittest.TestCase):
 
     def test_generated_hook_runs_from_path_with_spaces(self):
         self.install()
-        hooks = json.loads((self.home / "hooks.json").read_text())
+        hooks = json.loads((self.home / "hooks.json").read_text(encoding="utf-8"))
         command = hooks["hooks"]["SessionStart"][0]["hooks"][0]["command"]
         project = self.base / "sample project"
         (project / ".frontend-flow/example").mkdir(parents=True)

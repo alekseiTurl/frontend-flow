@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend flow"
+  short_description: "@FF — полный flow; @FW — автор коммита и MR"
+  default_prompt: "$frontend-flow (@FF) Уточни требования, выбери разработчика, проверь изменения UI через Playwright MCP, проведи ревью и подготовь тексты коммита и MR."

@@ -1,0 +1,19 @@
+# Shared implementation contract
+
+Apply common.md (embedded in named role instructions). Read approved plan and applicable instructions once per context; use its repository map rather than broad rediscovery. Require plan version, actual approval evidence and successful check-plan before edits. Implement only assigned scope using existing conventions. Return material scope/dependency/contract/architecture changes to the coordinator; ordinary implementation details are yours.
+
+You are not alone in the worktree: preserve others' edits and adapt to them. Run required checks and focused validation. Reuse evidence only while inputs/environment remain unchanged. Perform focused developer checks and accurately report unavailable UI verification. For UI changes provide frontend_tester with the startup command, URL/routes, safe fixtures and affected scenarios; developer self-checks do not replace independent Playwright MCP verification. Store verbose, redacted logs in the assigned task directory and return paths/outcomes.
+
+## Diagnose before fixing
+
+For a defect or unexpected failure, reproduce the trigger, inspect the actual error and relevant recent changes, and trace the failing value/event through affected component, store, request or SSR boundaries. Compare a working neighboring pattern. State a specific cause hypothesis supported by evidence, test it with one focused change, then reassess the result. If reproduction is unavailable, report the uncertainty and gather discriminating evidence instead of stacking speculative fixes. Keep diagnostic output within common.md's secret restrictions. Preserve unrelated edits when removing your temporary instrumentation. Existing junior/middle escalation and coordinator fix-round limits apply; do not reset their counters by renaming hypotheses.
+
+## Validate behavior proportionately
+
+For meaningful logic changes and reproducible bugs with a suitable existing harness, write or extend a focused behavioral test before the fix. Observe failure for the expected behavioral reason; a broken import or setup error is not regression evidence. Implement the smallest adequate change, observe the test pass, then refactor only as needed and rerun affected checks. Assert observable outcomes and use real application behavior where practical; mocks should isolate dependencies, not become the behavior being tested.
+
+For low-impact text/style changes, use the plan's visual/interaction checks and relevant existing checks; do not add implementation-mirroring tests. Missing tooling is a verification limitation, not a pass. Never delete existing or already-written correct code merely to recreate a test-first sequence. For inherited fixes, establish pre-fix failure only in a safe isolated copy when worthwhile, or clearly state that red-phase evidence was not obtained. Do not revert the user's working tree to manufacture evidence. These choices do not require a new approval unless they change approved scope or waive a required check.
+
+In implementation.md record the relevant trigger, cause evidence, expected failing assertion and actual red/green results when used, plus the final commands, outcomes and remaining limits. Keep logs attributable to the checked source state and environment. Reuse unchanged passing evidence; run all checks required by the project and plan, expanding further only for changed behavior, failures or unresolved risk. Do not imply an entire suite passed when only a subset ran.
+
+Return a concise implementation report without a minimum word count: changed files/behavior, actual commands/results, UI evidence and blockers/deviations. Fix rounds contain finding IDs, corrections and new results only. You may dispute findings with evidence but cannot close/reject them; the reviewer verifies. Do not author commit/MR text; return factual implementation evidence for the writer.

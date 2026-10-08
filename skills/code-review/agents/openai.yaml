@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Find actionable defects and regressions"
+  default_prompt: "Use $code-review to review these changes for concrete bugs and regressions."

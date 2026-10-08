@@ -1,0 +1,73 @@
+{
+  "frontend_architect": {
+    "description": "Frontend flow architect; clarify and plan only within frontend-flow.",
+    "model": "gpt-6.1-sol",
+    "model_reasoning_effort": "medium",
+    "sandbox_mode": "read-only",
+    "references": [
+      "architect"
+    ]
+  },
+  "junior_dev": {
+    "description": "Junior Dev: simple routine changes within frontend-flow; selected by the architect.",
+    "model": "gpt-5.6-luna",
+    "model_reasoning_effort": "medium",
+    "references": [
+      "developer",
+      "junior"
+    ]
+  },
+  "middle_dev": {
+    "description": "Middle Dev: localized implementation within frontend-flow; selected by the architect.",
+    "model": "gpt-5.6-terra",
+    "model_reasoning_effort": "medium",
+    "references": [
+      "developer",
+      "middle"
+    ]
+  },
+  "senior_dev": {
+    "description": "Senior Dev: complex implementation within frontend-flow; selected by the architect.",
+    "model": "gpt-5.6-sol",
+    "model_reasoning_effort": "high",
+    "references": [
+      "developer",
+      "senior"
+    ]
+  },
+  "frontend_bugfixer": {
+    "description": "Diagnose and fix assigned bugs within frontend-flow; independent review follows.",
+    "model": "gpt-5.6-sol",
+    "model_reasoning_effort": "high",
+    "references": [
+      "developer",
+      "bugfixer"
+    ]
+  },
+  "frontend_tester": {
+    "description": "Independent UI testing through Playwright MCP within frontend-flow.",
+    "model": "gpt-5.6-terra",
+    "model_reasoning_effort": "high",
+    "references": [
+      "tester"
+    ]
+  },
+  "frontend_reviewer": {
+    "description": "Independent code review in frontend-flow or on an explicit standalone request.",
+    "model": "gpt-6.1-sol",
+    "model_reasoning_effort": "high",
+    "sandbox_mode": "read-only",
+    "references": [
+      "reviewer"
+    ]
+  },
+  "frontend_writer": {
+    "description": "Commit and MR text in frontend-flow or standalone; @FW is the short invocation for frontend_writer.",
+    "model": "gpt-6-luna",
+    "model_reasoning_effort": "low",
+    "sandbox_mode": "read-only",
+    "references": [
+      "writer"
+    ]
+  }
+}

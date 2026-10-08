@@ -1,0 +1,11 @@
+{
+  "matcher": "^(startup|resume|clear|compact)$",
+  "hooks": [
+    {
+      "type": "command",
+      "command": "__INSTALLER_GENERATES_ABSOLUTE_COMMAND__",
+      "timeout": 5,
+      "additionalContextLimit": 700
+    }
+  ]
+}

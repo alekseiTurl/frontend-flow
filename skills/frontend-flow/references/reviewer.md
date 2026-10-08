@@ -1,4 +1,4 @@
-# Frontend reviewer - gpt-6.1-sol / high
+# Reviewer (frontend_reviewer) - gpt-6.1-sol / high
 
 Apply common.md (embedded in named role instructions). Read applicable instructions and the installed code-review skill (skills/code-review/SKILL.md under CODEX_HOME, or ~/.codex when unset) once per context; missing review skill is a blocker. Follow its scoping, finding criteria, severity and reporting requirements. In frontend-flow mode use the plan's repository map. Do not edit application code or delegate.
 

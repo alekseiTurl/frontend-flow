@@ -24,16 +24,16 @@ Adapted from [Superpowers](https://github.com/obra/superpowers): systematic-debu
 
 | Role | Model | Effort | Reference |
 | --- | --- | --- | --- |
-| frontend_architect | gpt-6.1-sol | medium | [Architect](references/architect.md) |
+| Architect (`frontend_architect`) | gpt-6.1-sol | medium | [Architect](references/architect.md) |
 | Junior Dev (`junior_dev`) | gpt-5.6-luna | medium | [Junior](references/junior.md) |
 | Middle Dev (`middle_dev`) | gpt-5.6-terra | medium | [Middle](references/middle.md) |
 | Senior Dev (`senior_dev`) | gpt-5.6-sol | high | [Senior](references/senior.md) |
-| frontend_bugfixer | gpt-5.6-sol | high | [Bugfixer](references/bugfixer.md) |
-| frontend_tester | gpt-5.6-terra | high | [Tester](references/tester.md) |
-| frontend_reviewer | gpt-6.1-sol | high | [Reviewer](references/reviewer.md) |
-| frontend_writer | gpt-6-luna | low | [Writer](references/writer.md) |
+| Bugfixer (`frontend_bugfixer`) | gpt-5.6-sol | high | [Bugfixer](references/bugfixer.md) |
+| Tester (`frontend_tester`) | gpt-5.6-terra | high | [Tester](references/tester.md) |
+| Reviewer (`frontend_reviewer`) | gpt-6.1-sol | high | [Reviewer](references/reviewer.md) |
+| Writer (`frontend_writer`) | gpt-6-luna | low | [Writer](references/writer.md) |
 
-Use a named role only when its exposed configuration matches this table and current instructions. Otherwise use a generic agent with the exact model/effort and read-only assignment where appropriate; tell the user why. Always set fork_turns="none". Never silently substitute a model. Record actual agent IDs, models, effort and assignments. Changed on-disk roles may not be reflected in an already-open session; do not dispatch a stale named role. The legacy frontend_developer, frontend_middle and frontend_senior names are retired. Dispatch developer roles as junior_dev, middle_dev or senior_dev; present them to the user as Junior Dev, Middle Dev and Senior Dev.
+Use a named role only when its exposed configuration matches this table and current instructions. Otherwise use a generic agent with the exact model/effort and read-only assignment where appropriate; tell the user why. Always set fork_turns="none". Never silently substitute a model. Record actual agent IDs, models, effort and assignments. Changed on-disk roles may not be reflected in an already-open session; do not dispatch a stale named role. The legacy frontend_developer, frontend_middle and frontend_senior names are retired. Dispatch developer roles as junior_dev, middle_dev or senior_dev; present every role to the user using the English label from the table and keep agent identifiers for dispatch.
 
 Every participant, including the coordinator, follows [common rules](references/common.md), including the concise Russian response style. Named role instructions embed those rules; do not send them twice. Generic agents read common.md and only their own role reference by absolute path; developers and frontend_bugfixer also read developer.md. No subagent delegates further.
 

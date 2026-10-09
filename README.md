@@ -43,7 +43,7 @@ python scripts/install.py --configure-playwright
 | **Middle Dev** (`middle_dev`) | `gpt-5.6-terra / high` |
 | **Senior Dev** (`senior_dev`) | `gpt-6-sol / high` |
 | Bugfixer (`frontend_bugfixer`) | `gpt-6-sol / high` |
-| Tester (`frontend_tester`) | `gpt-5.6-terra / high` |
+| Tester (`frontend_tester`) | `gpt-5.6-sol / high` |
 | Reviewer (`frontend_reviewer`) | `gpt-6.1-sol / high` |
 | Writer (`frontend_writer`) | `gpt-6-luna / low` |
 

@@ -29,7 +29,7 @@ Adapted from [Superpowers](https://github.com/obra/superpowers): systematic-debu
 | Middle Dev (`middle_dev`) | gpt-5.6-terra | high | [Middle](references/middle.md) |
 | Senior Dev (`senior_dev`) | gpt-6-sol | high | [Senior](references/senior.md) |
 | Bugfixer (`frontend_bugfixer`) | gpt-6-sol | high | [Bugfixer](references/bugfixer.md) |
-| Tester (`frontend_tester`) | gpt-5.6-terra | high | [Tester](references/tester.md) |
+| Tester (`frontend_tester`) | gpt-5.6-sol | high | [Tester](references/tester.md) |
 | Reviewer (`frontend_reviewer`) | gpt-6.1-sol | high | [Reviewer](references/reviewer.md) |
 | Writer (`frontend_writer`) | gpt-6-luna | low | [Writer](references/writer.md) |
 

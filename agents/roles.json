@@ -1,7 +1,7 @@
 {
   "frontend_architect": {
     "description": "Architect: clarify and plan only within frontend-flow.",
-    "model": "gpt-6.1-sol",
+    "model": "gpt-6-astra",
     "model_reasoning_effort": "medium",
     "sandbox_mode": "read-only",
     "references": [
@@ -20,7 +20,7 @@
   "middle_dev": {
     "description": "Middle Dev: localized implementation within frontend-flow; selected by the architect.",
     "model": "gpt-5.6-terra",
-    "model_reasoning_effort": "medium",
+    "model_reasoning_effort": "high",
     "references": [
       "developer",
       "middle"
@@ -28,7 +28,7 @@
   },
   "senior_dev": {
     "description": "Senior Dev: complex implementation within frontend-flow; selected by the architect.",
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-sol",
     "model_reasoning_effort": "high",
     "references": [
       "developer",
@@ -37,7 +37,7 @@
   },
   "frontend_bugfixer": {
     "description": "Bugfixer: diagnose and fix assigned bugs within frontend-flow; independent review follows.",
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-sol",
     "model_reasoning_effort": "high",
     "references": [
       "developer",

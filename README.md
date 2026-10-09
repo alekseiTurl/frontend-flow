@@ -38,11 +38,11 @@ python scripts/install.py --configure-playwright
 
 | Агент | Модель / усилие |
 | --- | --- |
-| Architect (`frontend_architect`) | `gpt-6.1-sol / medium` |
+| Architect (`frontend_architect`) | `gpt-6-astra / medium` |
 | **Junior Dev** (`junior_dev`) | `gpt-5.6-luna / medium` |
-| **Middle Dev** (`middle_dev`) | `gpt-5.6-terra / medium` |
-| **Senior Dev** (`senior_dev`) | `gpt-5.6-sol / high` |
-| Bugfixer (`frontend_bugfixer`) | `gpt-5.6-sol / high` |
+| **Middle Dev** (`middle_dev`) | `gpt-5.6-terra / high` |
+| **Senior Dev** (`senior_dev`) | `gpt-6-sol / high` |
+| Bugfixer (`frontend_bugfixer`) | `gpt-6-sol / high` |
 | Tester (`frontend_tester`) | `gpt-5.6-terra / high` |
 | Reviewer (`frontend_reviewer`) | `gpt-6.1-sol / high` |
 | Writer (`frontend_writer`) | `gpt-6-luna / low` |

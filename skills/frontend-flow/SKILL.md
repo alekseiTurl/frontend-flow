@@ -24,11 +24,11 @@ Adapted from [Superpowers](https://github.com/obra/superpowers): systematic-debu
 
 | Role | Model | Effort | Reference |
 | --- | --- | --- | --- |
-| Architect (`frontend_architect`) | gpt-6.1-sol | medium | [Architect](references/architect.md) |
+| Architect (`frontend_architect`) | gpt-6-astra | medium | [Architect](references/architect.md) |
 | Junior Dev (`junior_dev`) | gpt-5.6-luna | medium | [Junior](references/junior.md) |
-| Middle Dev (`middle_dev`) | gpt-5.6-terra | medium | [Middle](references/middle.md) |
-| Senior Dev (`senior_dev`) | gpt-5.6-sol | high | [Senior](references/senior.md) |
-| Bugfixer (`frontend_bugfixer`) | gpt-5.6-sol | high | [Bugfixer](references/bugfixer.md) |
+| Middle Dev (`middle_dev`) | gpt-5.6-terra | high | [Middle](references/middle.md) |
+| Senior Dev (`senior_dev`) | gpt-6-sol | high | [Senior](references/senior.md) |
+| Bugfixer (`frontend_bugfixer`) | gpt-6-sol | high | [Bugfixer](references/bugfixer.md) |
 | Tester (`frontend_tester`) | gpt-5.6-terra | high | [Tester](references/tester.md) |
 | Reviewer (`frontend_reviewer`) | gpt-6.1-sol | high | [Reviewer](references/reviewer.md) |
 | Writer (`frontend_writer`) | gpt-6-luna | low | [Writer](references/writer.md) |

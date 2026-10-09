@@ -6,11 +6,11 @@
 
 | Агент | Модель / усилие | Задача |
 | --- | --- | --- |
-| Architect (`frontend_architect`) | `gpt-6.1-sol / medium` | Уточняет требования, готовит план и проверки, выбирает исполнителя |
+| Architect (`frontend_architect`) | `gpt-6-astra / medium` | Уточняет требования, готовит план и проверки, выбирает исполнителя |
 | **Junior Dev** (`junior_dev`) | `gpt-5.6-luna / medium` | Простые рутинные правки по готовому образцу |
-| **Middle Dev** (`middle_dev`) | `gpt-5.6-terra / medium` | Локальная логика, взаимодействие компонентов, типовые формы и состояния |
-| **Senior Dev** (`senior_dev`) | `gpt-5.6-sol / high` | Сложная логика, связи модулей, async, SSR |
-| Bugfixer (`frontend_bugfixer`) | `gpt-5.6-sol / high` | Воспроизводит дефекты, устраняет причину, запускает проверки |
+| **Middle Dev** (`middle_dev`) | `gpt-5.6-terra / high` | Локальная логика, взаимодействие компонентов, типовые формы и состояния |
+| **Senior Dev** (`senior_dev`) | `gpt-6-sol / high` | Сложная логика, связи модулей, async, SSR |
+| Bugfixer (`frontend_bugfixer`) | `gpt-6-sol / high` | Воспроизводит дефекты, устраняет причину, запускает проверки |
 | Tester (`frontend_tester`) | `gpt-5.6-terra / high` | Запускает приложение и проверяет изменённый UI через Playwright MCP |
 | Reviewer (`frontend_reviewer`) | `gpt-6.1-sol / high` | Проверяет выполнение требований, качество кода и исправления |
 | Writer (`frontend_writer`) | `gpt-6-luna / low` | Готовит сообщения коммитов и описания MR |

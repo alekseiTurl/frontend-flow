@@ -2,7 +2,7 @@
   "frontend_architect": {
     "description": "Architect: clarify and plan only within frontend-flow.",
     "model": "gpt-6-astra",
-    "model_reasoning_effort": "medium",
+    "model_reasoning_effort": "high",
     "sandbox_mode": "read-only",
     "references": [
       "architect"

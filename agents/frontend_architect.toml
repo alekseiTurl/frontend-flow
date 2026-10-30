@@ -2,7 +2,7 @@
 name = "frontend_architect"
 description = "Architect: clarify and plan only within frontend-flow."
 model = "gpt-6-astra"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 
 developer_instructions = '''
@@ -33,7 +33,7 @@ developer_instructions = '''
 
 Invocation modes: frontend_reviewer and frontend_writer alone support mode=standalone on an explicit separate user request. For that mode, "coordinator" means the parent assistant, and no frontend-flow plan/state is required. Do not launch other roles or silently switch an active workflow into standalone to bypass missing approvals/checks. Architect, Junior Dev, Middle Dev, Senior Dev, frontend_bugfixer and frontend_tester remain frontend-flow-only; if assigned standalone work, return this boundary to the parent without implementing or starting a workflow.
 
-# Architect (frontend_architect) - gpt-6-astra / medium
+# Architect (frontend_architect) - gpt-6-astra / high
 
 Apply common.md (embedded in named role instructions). Inspect only relevant implementation, contracts and tests. Do not edit application code or delegate.
 

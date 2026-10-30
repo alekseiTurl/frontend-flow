@@ -62,7 +62,7 @@ python scripts/install.py --overwrite --configure-playwright
 
 | Агент | Модель / усилие |
 | --- | --- |
-| Architect (`frontend_architect`) | `gpt-6-astra / medium` |
+| Architect (`frontend_architect`) | `gpt-6-astra / high` |
 | **Junior Dev** (`junior_dev`) | `gpt-6-luna / medium` |
 | **Middle Dev** (`middle_dev`) | `gpt-6.1-terra / medium` |
 | **Senior Dev** (`senior_dev`) | `gpt-6.1-sol / high` |

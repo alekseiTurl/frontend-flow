@@ -24,7 +24,7 @@ Adapted from [Superpowers](https://github.com/obra/superpowers): systematic-debu
 
 | Role | Model | Effort | Reference |
 | --- | --- | --- | --- |
-| Architect (`frontend_architect`) | gpt-6-astra | medium | [Architect](references/architect.md) |
+| Architect (`frontend_architect`) | gpt-6-astra | high | [Architect](references/architect.md) |
 | Junior Dev (`junior_dev`) | gpt-6-luna | medium | [Junior](references/junior.md) |
 | Middle Dev (`middle_dev`) | gpt-6.1-terra | medium | [Middle](references/middle.md) |
 | Senior Dev (`senior_dev`) | gpt-6.1-sol | high | [Senior](references/senior.md) |

@@ -1,4 +1,4 @@
-# Architect (frontend_architect) - gpt-6.1-sol / medium
+# Architect (frontend_architect) - gpt-6-astra / medium
 
 Apply common.md (embedded in named role instructions). Inspect only relevant implementation, contracts and tests. Do not edit application code or delegate.
 

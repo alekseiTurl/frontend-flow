@@ -62,7 +62,7 @@ python scripts/install.py --overwrite --configure-playwright
 
 | Агент | Модель / усилие |
 | --- | --- |
-| Architect (`frontend_architect`) | `gpt-6.1-sol / medium` |
+| Architect (`frontend_architect`) | `gpt-6-astra / medium` |
 | **Junior Dev** (`junior_dev`) | `gpt-6-luna / medium` |
 | **Middle Dev** (`middle_dev`) | `gpt-6.1-terra / medium` |
 | **Senior Dev** (`senior_dev`) | `gpt-6.1-sol / high` |
@@ -71,7 +71,7 @@ python scripts/install.py --overwrite --configure-playwright
 | Reviewer (`frontend_reviewer`) | `gpt-6.1-sol / high` |
 | Writer (`frontend_writer`) | `gpt-6-luna / low` |
 
-Сетка отдаёт рутинные задачи Luna, локальную реализацию и UI-проверки — Terra, планирование и сложную работу — Sol. Экономия учитывает повторные попытки и общий контекст; обязательные проверки сохраняются. [Обоснование выбора и тарифы](docs/frontend-flow.md).
+Сетка отдаёт рутинные задачи Luna, локальную реализацию и UI-проверки — Terra, сложную разработку и ревью — Sol, планирование — Astra. Экономия учитывает повторные попытки и общий контекст; обязательные проверки сохраняются. [Обоснование выбора и тарифы](docs/frontend-flow.md).
 
 ## Разработка комплекта
 

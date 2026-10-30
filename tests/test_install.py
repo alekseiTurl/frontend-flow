@@ -59,6 +59,68 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(len(backups), 1)
         self.assertEqual(backups[0].read_text(encoding="utf-8"), "old personal role")
 
+    def test_overwrite_refreshes_hook_command_with_backup_and_dry_run(self):
+        self.install()
+        p = self.home / "hooks.json"
+        script = self.home / "skills/frontend-flow/scripts/session-start.cjs"
+        old_node = self.base / "previous Node" / Path(self.node).name
+        other = {"hooks": [{"type": "command", "command": "echo other"}]}
+        for command in (installer.shell_command(old_node, script), 'node "' + script.as_posix() + '"'):
+            with self.subTest(command=command):
+                hooks = json.loads(p.read_text(encoding="utf-8"))
+                flow = hooks["hooks"]["SessionStart"][-1]
+                expected_command = flow["hooks"][0]["command"]
+                flow["hooks"][0]["command"] = command
+                hooks["hooks"]["SessionStart"] = [other, flow]
+                hooks["description"] = "keep"
+                original = json.dumps(hooks).encode("utf-8")
+                p.write_bytes(original)
+                with self.assertRaisesRegex(ValueError, "different frontend-flow hook"):
+                    self.install()
+                backups_before = list((self.home / "frontend-flow-backups").glob("*/hooks.json"))
+                self.assertEqual(self.install(overwrite=True, dry_run=True), ["hooks.json"])
+                self.assertEqual(p.read_bytes(), original)
+                self.assertEqual(list((self.home / "frontend-flow-backups").glob("*/hooks.json")), backups_before)
+                self.assertEqual(self.install(overwrite=True), ["hooks.json"])
+                updated = json.loads(p.read_text(encoding="utf-8"))
+                self.assertEqual(updated["hooks"]["SessionStart"][0], other)
+                self.assertEqual(updated["description"], "keep")
+                self.assertEqual(updated["hooks"]["SessionStart"][1]["hooks"][0]["command"], expected_command)
+                backups = list((self.home / "frontend-flow-backups").glob("*/hooks.json"))
+                self.assertEqual(len(backups), len(backups_before) + 1)
+                self.assertTrue(any(backup.read_bytes() == original for backup in backups))
+                self.assertEqual(self.install(overwrite=True), [])
+
+    def test_overwrite_rejects_foreign_or_customized_hooks(self):
+        group = json.loads((installer.REPO / "hooks/session-start.template.json").read_text(encoding="utf-8"))
+        script = self.home / "skills/frontend-flow/scripts/session-start.cjs"
+        old_node = self.base / "previous Node" / Path(self.node).name
+        group["hooks"][0]["command"] = installer.shell_command(old_node, script)
+        foreign = copy.deepcopy(group)
+        foreign["hooks"][0]["command"] = installer.shell_command(old_node, self.base / "other/frontend-flow/scripts/session-start.cjs")
+        custom_matcher = copy.deepcopy(group)
+        custom_matcher["matcher"] = "startup"
+        custom_handler = copy.deepcopy(group)
+        custom_handler["hooks"][0]["timeout"] = 30
+        mixed = copy.deepcopy(group)
+        mixed["hooks"].append({"type": "command", "command": "echo other"})
+        wrapper = copy.deepcopy(group)
+        wrapper["hooks"][0]["command"] += " && echo custom"
+        malformed = copy.deepcopy(group)
+        malformed["hooks"][0]["command"] += '"'
+        matching = copy.deepcopy(group)
+        matching["hooks"][0]["command"] = installer.shell_command(Path(self.node).resolve(), script)
+        cases = [[hook] for hook in (foreign, custom_matcher, custom_handler, mixed, wrapper, malformed)]
+        cases.extend(([matching, foreign], [matching, group], [group, group], [matching, matching]))
+        for groups in cases:
+            with self.subTest(hooks=groups):
+                original = json.dumps({"hooks": {"SessionStart": groups}})
+                p = self.put("hooks.json", original)
+                with self.assertRaisesRegex(ValueError, "frontend-flow hook"):
+                    self.install(overwrite=True)
+                self.assertEqual(p.read_text(encoding="utf-8"), original)
+                self.assertFalse((self.home / "agents").exists())
+
     def test_existing_mcp_and_unrelated_config_are_preserved(self):
         original = '# keep comments\nmodel = "example"\n[mcp_servers.playwright]\ncommand = "custom"\n'
         p = self.put("config.toml", original)

@@ -35,21 +35,38 @@ def shell_command(node, script):
     return shlex.join(args)
 
 
-def merge_hooks(existing, group):
+def merge_hooks(existing, group, script, overwrite=False):
     data = copy.deepcopy(existing)
     if not isinstance(data, dict) or not isinstance(data.setdefault("hooks", {}), dict):
         raise ValueError("hooks.json must contain a hooks object")
     groups = data["hooks"].setdefault("SessionStart", [])
     if not isinstance(groups, list):
         raise ValueError("SessionStart must be an array")
-    for current in groups:
-        if current == group:
-            return data
+    found = False
+    for index, current in enumerate(groups):
         for handler in current.get("hooks", []):
             value = handler.get("command", "").replace("\\", "/")
             if "frontend-flow/scripts/session-start.cjs" in value:
+                if found:
+                    raise ValueError("Multiple frontend-flow hooks exist; review them manually")
+                found = True
+                if current == group:
+                    break
+                updated = copy.deepcopy(current)
+                updated["hooks"] = [{**handler, "command": group["hooks"][0]["command"]}]
+                try:
+                    args = shlex.split(handler["command"], posix=os.name != "nt")
+                except ValueError:
+                    args = []
+                if (overwrite and len(current["hooks"]) == 1 and updated == group
+                        and len(args) == 2
+                        and Path(args[0].strip('"')).name.lower() in ("node", "node.exe")
+                        and Path(args[1].strip('"')).resolve() == script):
+                    groups[index] = updated
+                    break
                 raise ValueError("A different frontend-flow hook exists; review it manually")
-    groups.append(group)
+    if not found:
+        groups.append(group)
     return data
 
 
@@ -83,14 +100,15 @@ def build_plan(home, overwrite=False, configure_playwright=False, install_style=
     if not node or not Path(node).is_file():
         raise ValueError("Node.js executable is required for the SessionStart hook")
     group = json.loads((REPO / "hooks/session-start.template.json").read_text(encoding="utf-8"))
-    group["hooks"][0]["command"] = shell_command(Path(node).resolve(), home / "skills/frontend-flow/scripts/session-start.cjs")
+    script = home / "skills/frontend-flow/scripts/session-start.cjs"
+    group["hooks"][0]["command"] = shell_command(Path(node).resolve(), script)
     for item in config.get("hooks", {}).get("SessionStart", []):
         for handler in item.get("hooks", []):
             if "frontend-flow/scripts/session-start.cjs" in handler.get("command", "").replace("\\", "/"):
                 raise ValueError("frontend-flow is registered inline in config.toml; review hooks manually")
     hook_path = safe_target(home, Path("hooks.json"))
     existing = json.loads(hook_path.read_text(encoding="utf-8-sig")) if hook_path.exists() else {}
-    merged = merge_hooks(existing, group)
+    merged = merge_hooks(existing, group, script, overwrite)
     if merged != existing:
         writes[Path("hooks.json")] = (json.dumps(merged, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
 

@@ -2,7 +2,7 @@
 
 ## Требования
 
-- Codex с поддержкой пользовательских агентов, навыков, MCP и lifecycle hooks.
+- Codex с поддержкой пользовательских агентов, навыков, MCP и lifecycle hooks. Для GPT-6.1 Terra через CLI нужен Codex CLI 0.159.0 или новее ([требования OpenAI](https://learn.chatgpt.com/docs/models)).
 - Доступ к моделям из [таблицы ролей](frontend-flow.md). Доступность зависит от аккаунта и клиента; установщик её не проверяет.
 - Python 3.11 или новее; сторонние Python-пакеты не нужны.
 - Node.js 22 или новее и `npx` в PATH. Node нужен хуку и проверкам flow; npx — Playwright MCP.

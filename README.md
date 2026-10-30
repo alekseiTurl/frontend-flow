@@ -6,6 +6,8 @@
 
 Нужны Codex с поддержкой пользовательских агентов, навыков, MCP и lifecycle hooks, доступ к моделям ниже, Python 3.11+, Node.js 22+ и `npx` в PATH.
 
+Для GPT-6.1 Terra через CLI нужен Codex CLI 0.159.0 или новее; доступность моделей также зависит от аккаунта и клиента ([требования OpenAI](https://learn.chatgpt.com/docs/models)).
+
 ```sh
 git clone https://github.com/alekseiTurl/frontend-flow.git
 cd frontend-flow
@@ -60,14 +62,16 @@ python scripts/install.py --overwrite --configure-playwright
 
 | Агент | Модель / усилие |
 | --- | --- |
-| Architect (`frontend_architect`) | `gpt-6-astra / medium` |
-| **Junior Dev** (`junior_dev`) | `gpt-5.6-luna / medium` |
-| **Middle Dev** (`middle_dev`) | `gpt-5.6-terra / high` |
-| **Senior Dev** (`senior_dev`) | `gpt-6-sol / high` |
-| Bugfixer (`frontend_bugfixer`) | `gpt-6-sol / high` |
-| Tester (`frontend_tester`) | `gpt-5.6-sol / high` |
+| Architect (`frontend_architect`) | `gpt-6-astra / high` |
+| **Junior Dev** (`junior_dev`) | `gpt-6-luna / medium` |
+| **Middle Dev** (`middle_dev`) | `gpt-6.1-terra / medium` |
+| **Senior Dev** (`senior_dev`) | `gpt-6.1-sol / high` |
+| Bugfixer (`frontend_bugfixer`) | `gpt-6.1-sol / high` |
+| Tester (`frontend_tester`) | `gpt-6.1-terra / medium` |
 | Reviewer (`frontend_reviewer`) | `gpt-6.1-sol / high` |
 | Writer (`frontend_writer`) | `gpt-6-luna / low` |
+
+Сетка отдаёт рутинные задачи Luna, локальную реализацию и UI-проверки — Terra, сложную разработку и ревью — Sol, планирование — Astra. Экономия учитывает повторные попытки и общий контекст; обязательные проверки сохраняются. [Обоснование выбора и тарифы](docs/frontend-flow.md).
 
 ## Разработка комплекта
 

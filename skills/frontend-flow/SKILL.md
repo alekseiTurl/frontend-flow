@@ -24,14 +24,16 @@ Adapted from [Superpowers](https://github.com/obra/superpowers): systematic-debu
 
 | Role | Model | Effort | Reference |
 | --- | --- | --- | --- |
-| Architect (`frontend_architect`) | gpt-6-astra | medium | [Architect](references/architect.md) |
-| Junior Dev (`junior_dev`) | gpt-5.6-luna | medium | [Junior](references/junior.md) |
-| Middle Dev (`middle_dev`) | gpt-5.6-terra | high | [Middle](references/middle.md) |
-| Senior Dev (`senior_dev`) | gpt-6-sol | high | [Senior](references/senior.md) |
-| Bugfixer (`frontend_bugfixer`) | gpt-6-sol | high | [Bugfixer](references/bugfixer.md) |
-| Tester (`frontend_tester`) | gpt-5.6-sol | high | [Tester](references/tester.md) |
+| Architect (`frontend_architect`) | gpt-6-astra | high | [Architect](references/architect.md) |
+| Junior Dev (`junior_dev`) | gpt-6-luna | medium | [Junior](references/junior.md) |
+| Middle Dev (`middle_dev`) | gpt-6.1-terra | medium | [Middle](references/middle.md) |
+| Senior Dev (`senior_dev`) | gpt-6.1-sol | high | [Senior](references/senior.md) |
+| Bugfixer (`frontend_bugfixer`) | gpt-6.1-sol | high | [Bugfixer](references/bugfixer.md) |
+| Tester (`frontend_tester`) | gpt-6.1-terra | medium | [Tester](references/tester.md) |
 | Reviewer (`frontend_reviewer`) | gpt-6.1-sol | high | [Reviewer](references/reviewer.md) |
 | Writer (`frontend_writer`) | gpt-6-luna | low | [Writer](references/writer.md) |
+
+Выбирайте минимально достаточный уровень исполнителя с учётом сложности и критериев приёмки. Оценивайте общий расход токенов по задаче, включая контекст, повторные попытки и передачу работы. Экономия не отменяет независимое ревью, обязательные UI-проверки и существующие правила передачи сложной работы.
 
 Use a named role only when its exposed configuration matches this table and current instructions. Otherwise use a generic agent with the exact model/effort and read-only assignment where appropriate; tell the user why. Always set fork_turns="none". Never silently substitute a model. Record actual agent IDs, models, effort and assignments. Changed on-disk roles may not be reflected in an already-open session; do not dispatch a stale named role. The legacy frontend_developer, frontend_middle and frontend_senior names are retired. Dispatch developer roles as junior_dev, middle_dev or senior_dev; present every role to the user using the English label from the table and keep agent identifiers for dispatch.
 

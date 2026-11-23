@@ -24,13 +24,13 @@ Adapted from [Superpowers](https://github.com/obra/superpowers): systematic-debu
 
 | Role | Model | Effort | Reference |
 | --- | --- | --- | --- |
-| Architect (`frontend_architect`) | gpt-6-astra | high | [Architect](references/architect.md) |
+| Architect (`frontend_architect`) | gpt-6.2-astra | high | [Architect](references/architect.md) |
 | Junior Dev (`junior_dev`) | gpt-6-luna | medium | [Junior](references/junior.md) |
 | Middle Dev (`middle_dev`) | gpt-6.1-terra | medium | [Middle](references/middle.md) |
-| Senior Dev (`senior_dev`) | gpt-6.1-sol | high | [Senior](references/senior.md) |
-| Bugfixer (`frontend_bugfixer`) | gpt-6.1-sol | high | [Bugfixer](references/bugfixer.md) |
+| Senior Dev (`senior_dev`) | gpt-6.2-sol | high | [Senior](references/senior.md) |
+| Bugfixer (`frontend_bugfixer`) | gpt-6.2-sol | high | [Bugfixer](references/bugfixer.md) |
 | Tester (`frontend_tester`) | gpt-6.1-terra | medium | [Tester](references/tester.md) |
-| Reviewer (`frontend_reviewer`) | gpt-6.1-sol | high | [Reviewer](references/reviewer.md) |
+| Reviewer (`frontend_reviewer`) | gpt-6.2-sol | high | [Reviewer](references/reviewer.md) |
 | Writer (`frontend_writer`) | gpt-6-luna | low | [Writer](references/writer.md) |
 
 Выбирайте минимально достаточный уровень исполнителя с учётом сложности и критериев приёмки. Оценивайте общий расход токенов по задаче, включая контекст, повторные попытки и передачу работы. Экономия не отменяет независимое ревью, обязательные UI-проверки и существующие правила передачи сложной работы.
